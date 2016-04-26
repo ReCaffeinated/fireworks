@@ -36,7 +36,7 @@ a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 = [turtle.Turtle() for x in range(10)]
 artists = [a0, a1, a2, a3, a4, a5, a6, a7, a8, a9]
 
 #generates rotational angles and movements
-m0, m1, m2, m3, m4, m5, m6, m7, m8, m9 = [random.randrange(30,40) for x in range(10)]
+m0, m1, m2, m3, m4, m5, m6, m7, m8, m9 = [random.randrange(40,60) for x in range(10)]
 move = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9]
 r0, r1, r2, r3, r4, r5, r6, r7, r8, r9 = [random.randrange(0,360) for x in range(10)]
 rotate = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9]
