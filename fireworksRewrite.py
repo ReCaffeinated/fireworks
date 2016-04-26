@@ -28,125 +28,51 @@ import turtle
 import random
 
 #setup the display, configures background color and exit on click
-window = turtle.Screen()
-window.bgcolor("black")
+wn = turtle.Screen()
+wn.bgcolor("black")
 
-#I still haven't found a way to automate variable creation so I'll have to do this part by hand
-#Creates all the turtles
-artist0 = turtle.Turtle()
-artist1 = turtle.Turtle()
-artist2 = turtle.Turtle()
-artist3 = turtle.Turtle()
-artist4 = turtle.Turtle()
-artist5 = turtle.Turtle()
-artist6 = turtle.Turtle()
-artist7 = turtle.Turtle()
-artist8 = turtle.Turtle()
-artist9 = turtle.Turtle()
+#creates all the turtles and crams them into a list
+a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 = [turtle.Turtle() for x in range(10)]
+artists = [a0, a1, a2, a3, a4, a5, a6, a7, a8, a9]
 
-#Configures turtle color
-artist0.color("Red")
-artist1.color("Blue")
-artist2.color("Purple")
-artist3.color("Brown")
-artist4.color("Gold")
-artist5.color("DarkKhaki")
-artist6.color("OrangeRed")
-artist7.color("DarkSlateGray")
-artist8.color("MediumSpringGreen")
-artist9.color("ForestGreen")
+#generates rotational angles and movements
+m0, m1, m2, m3, m4, m5, m6, m7, m8, m9 = [random.randrange(30,40) for x in range(10)]
+move = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9]
+r0, r1, r2, r3, r4, r5, r6, r7, r8, r9 = [random.randrange(0,360) for x in range(10)]
+rotate = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9]
 
-#Sets the icon that the turtle is represented by, in this case turtle
-artist0.shape("blank")
-artist1.shape("blank")
-artist2.shape("blank")
-artist3.shape("blank")
-artist4.shape("blank")
-artist5.shape("blank")
-artist6.shape("blank")
-artist7.shape("blank")
-artist8.shape("blank")
-artist9.shape("blank")
+#Configures turtle color, I'll randomize this at some point
+a0.color("Red")
+a1.color("Blue")
+a2.color("Purple")
+a3.color("Brown")
+a4.color("Gold")
+a5.color("DarkKhaki")
+a6.color("OrangeRed")
+a7.color("DarkSlateGray")
+a8.color("MediumSpringGreen")
+a9.color("ForestGreen")
 
-#Configures speed, 1-9, with nine being the fastest, 0 even faster as it disables delay
-artist0.speed(0)
-artist1.speed(0)
-artist2.speed(0)
-artist3.speed(0)
-artist4.speed(0)
-artist5.speed(0)
-artist6.speed(0)
-artist7.speed(0)
-artist8.speed(0)
-artist9.speed(0)
+#set up the turtles to draw the shapes
+for a in artists:
+    a.speed(0)
+    a.ht()
+    a.penup()
+    a.right(random.randrange(0,360))
+    a.forward(125)
+    a.pendown()
 
-#penup prevents them from drawing lines as they move into position
-for x in[artist0,artist1,artist2,artist3,artist4,artist5,artist6,artist7,artist8,artist9]:
-	x.penup()
+#does the actual drawing, fascinating bit of code here, it loops this sequence one-hundred and twenty times
+#It calls the artists list above and pulls index 'x' from 0 to 9
+#Index 'x' corresponds to a0, a1, a2 and so fourth, the turtles, but it also corresponds to the rotation and move lists
+#Issues a command to a turtle, so a3.left(rotate[x])
+#rotate[x] uses the same index as before, only this time it's calling the rotate list
+#since the indexes correspond I can have the turtle move by a corresponding value generated for it on lines 39 and 41
+for i in range(120):
+    for x in range(0,9):
+        artists[x].left(rotate[x])
+        artists[x].forward(move[x])
 
-#generates the directon the turtle faces using the random module
-rotation0 = random.randrange(0,360)
-rotation1 = random.randrange(0,360)
-rotation2 = random.randrange(0,360)
-rotation3 = random.randrange(0,360)
-rotation4 = random.randrange(0,360)
-rotation5 = random.randrange(0,360)
-rotation6 = random.randrange(0,360)
-rotation7 = random.randrange(0,360)
-rotation8 = random.randrange(0,360)
-rotation9 = random.randrange(0,360)
 
-#rotates the turtle
-artist0.right(rotation0)
-artist1.right(rotation1)
-artist2.right(rotation2)
-artist3.right(rotation3)
-artist4.right(rotation4)
-artist5.right(rotation5)
-artist6.right(rotation6)
-artist7.right(rotation7)
-artist8.right(rotation8)
-artist9.right(rotation9)
+wn.exitonclick()
 
-#randomizes the length of the line cegments
-move0 = random.randrange(40,60)
-move1 = random.randrange(40,60)
-move2 = random.randrange(40,60)
-move3 = random.randrange(40,60)
-move4 = random.randrange(40,60)
-move5 = random.randrange(40,60)
-move6 = random.randrange(40,60)
-move7 = random.randrange(40,60)
-move8 = random.randrange(40,60)
-move9 = random.randrange(40,60)
-
-#Moves the turtles away from the center
-for x in[artist0,artist1,artist2,artist3,artist4,artist5,artist6,artist7,artist8,artist9]:
-	x.forward(125)
-	x.pendown()
-
-#The turtles begin to draw
-for y in range(120):
-	artist0.forward(move0)
-	artist1.forward(move1)
-	artist2.forward(move2)
-	artist3.forward(move3)
-	artist4.forward(move4)
-	artist5.forward(move5)
-	artist6.forward(move6)
-	artist7.forward(move7)
-	artist8.forward(move8)
-	artist9.forward(move9)
-	
-	artist0.left(rotation0)
-	artist1.left(rotation1)
-	artist2.left(rotation2)
-	artist3.left(rotation3)
-	artist4.left(rotation4)
-	artist5.left(rotation5)
-	artist6.left(rotation6)
-	artist7.left(rotation7)
-	artist8.left(rotation8)
-	artist9.left(rotation9)
-
-window.exitonclick()
