@@ -2,22 +2,24 @@
 # -*- coding: utf-8 -*-
 import turtle
 import random
+
 #setup the display, configures background color
 wn = turtle.Screen()
 wn.bgcolor("black")
 
 #creates all the turtles and crams them into a list
 artists = [turtle.Turtle() for x in range(10)]
+
 #generates rotational angles and movements
 move = [random.randrange(40,60) for x in range(10)]
 rotate = [random.randrange(0,360) for x in range(10)]
 
 #Configures turtle color
 colors = (
-"Red","Blue","Purple","Brown","Gold",
-"DarkKhaki","OrangeRed","DarkSlateGray",
-"MediumSpringGreen","ForestGreen"
-)
+    "Red","Blue","Purple","Brown","Gold",
+    "DarkKhaki","OrangeRed","DarkSlateGray",
+    "MediumSpringGreen","ForestGreen"
+    )
 for artist, color in zip(artists, colors):
 	artist.color(color)
 
